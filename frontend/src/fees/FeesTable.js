@@ -17,8 +17,8 @@ const FeesTable = () => {
     )
 };
 
-const TableRow = ({baseCurrency, targetCurrency, rate, key, refreshList}) =>
-    <tr key={key}>
+const TableRow = ({baseCurrency, targetCurrency, rate, refreshList}) =>
+    <tr>
         <td>{baseCurrency}</td>
         <td><i className="fa fa-arrow-right"/></td>
         <td>{targetCurrency}</td>
