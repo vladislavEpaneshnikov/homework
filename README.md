@@ -21,4 +21,4 @@ npm run build
 
 3) For redeployment with new changes run "docker-compose build --no-cache" and "docker-compose up"
 
-(UI served on localhost:3000)
+(UI served on localhost:3000, Backend on localhost:8080)
