@@ -25,7 +25,7 @@ const ConverterForm = () => {
                         value={form.amount}
                         allowDecimals
                         decimalsLimit={2}
-                        onChange={(value) => setForm(prevState => ({...prevState, amount: value < maxAmount ? value : maxAmount }))}
+                        onChange={(value) => setForm(prevState => ({...prevState, amount: (value || 0) < maxAmount ? value : maxAmount }))}
                     />
                 </div>
 
