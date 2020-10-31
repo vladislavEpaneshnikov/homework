@@ -1,0 +1,43 @@
+.custom-fees-table {
+  margin: auto;
+  font-size: 20px;
+  border-collapse: collapse;
+
+  button {
+    cursor: pointer;
+    border-radius: 2px;
+    border: none;
+    font-weight: 600;
+    color: white;
+    background-color: $base-color-lighter;
+    height: 38px;
+    width: 100px;
+
+    &:hover {
+      background-color: $base-color;
+    }
+  }
+  td {
+    padding: 10px;
+    color: $base-color;
+
+    &:last-child {
+      padding-left: 20px;
+    }
+  }
+
+  tr {
+    padding-bottom: 10px;
+    border-bottom: 1px solid $base-color-lighter;
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .no-fees-saved {
+    font-size: 24px;
+    color: $base-color-lighter;
+  }
+}
+
+

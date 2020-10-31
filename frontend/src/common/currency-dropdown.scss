@@ -1,0 +1,71 @@
+.currency-dropdown-btn {
+  background-color: $base-color-lighter;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  width: 80px;
+
+  i {
+    padding-left: 5px;
+  }
+}
+
+.currency-dropdown {
+  position: relative;
+  display: inline-block;
+
+  &:hover .currency-dropdown-btn {
+    background-color: $base-color;
+  }
+
+  .currency-dropdown-btn:focus + .currency-dropdown-content,
+  .currency-dropdown-content:hover {
+    display: block;
+  }
+}
+
+.currency-dropdown-content {
+  max-height: 40vh;
+  overflow-y: auto;
+  display: none;
+  position: absolute;
+  background-color: $base-color-lighter;
+  width: 80px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+
+  div {
+    cursor: pointer;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+
+    &:hover {
+      background-color: $base-color;
+      color: white;
+    }
+  }
+
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: $base-color-lighter $base-color-darker;
+
+  /* Chrome/Edge/Safari */
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $base-color-lighter;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $base-color-lighter;
+    border-radius: 10px;
+    border: 10px solid $base-color-darker;
+  }
+}

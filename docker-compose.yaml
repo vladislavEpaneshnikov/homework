@@ -1,0 +1,17 @@
+version: "3.3"
+
+services:
+  client:
+    stdin_open: true
+    build:
+      context: .
+      dockerfile: DockerfileClient
+    ports:
+      - "3000:3000"
+  service:
+    stdin_open: true
+    build:
+      context: .
+      dockerfile: DockerfileService
+    ports:
+      - "8080:8080"

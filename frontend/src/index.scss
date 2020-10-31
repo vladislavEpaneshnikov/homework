@@ -1,0 +1,52 @@
+$base-color: #d34b43;
+$base-color-darker: #d32720;
+$base-color-lighter: #ff8917;
+
+@import "./common/currency-dropdown.scss";
+@import "./fees/fees-form.scss";
+@import "./fees/fees-table.scss";
+@import "./converter/converter.scss";
+
+h1, h2 {
+  color: $base-color;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 40px;
+}
+
+h1 {
+  margin-bottom: 60px;
+}
+
+body {
+  font-family: Andale Mono, monospace;
+  margin-bottom: 100px;
+  margin-top: 20px;
+}
+
+.currency-input {
+  max-width: 120px;
+  font-weight: bold;
+  background-color: white;
+  border-radius: 2px;
+  color: $base-color-lighter;
+  border: 2px solid $base-color-lighter;
+  padding: 8px;
+  font-size: 16px;
+  &:hover, &:focus {
+    background-color: $base-color;
+    color: white;
+  }
+}
+
+.section-separator {
+  max-width: 800px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  border: 3px solid $base-color;
+  border-radius: 5px;
+}
+
+
