@@ -1,6 +1,5 @@
 import React, {useContext, useState} from 'react';
 import {CurrencyListContext} from "../context/CurrencyListProvider";
-import CurrencyInput from 'react-currency-input-field';
 import {CustomRatesContext} from "../context/CustomRatesListProvider";
 import {editCustomRate} from "../RestApi";
 import ToggledButton from "../common/ToggledButton";
@@ -32,19 +31,17 @@ const FeesForm = () => {
             </div>
 
             <div>
-                <label>Fee</label>
+                <label htmlFor="fee-input">Fee</label>
 
-                <CurrencyInput
-                    id="rate"
+                <input
+                    id="fee-input"
                     className="currency-input"
-                    name="input-name"
-                    groupSeparator=" "
-                    allowDecimals
+                    type="number"
                     value={form.rate}
-                    decimalsLimit={2}
-                    onChange={(value) => {
-                        setForm(prevState => ({...prevState, rate: (value || 0) < maxRate ? value : maxRate}))
-                    }}
+                    onChange={({target: {value}}) => setForm(prevState => ({
+                        ...prevState,
+                        rate: (value || 0) < maxRate ? value : prevState.rate
+                    }))}
                 />
             </div>
 

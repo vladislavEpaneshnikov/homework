@@ -1,6 +1,5 @@
 import React, {useContext, useState} from 'react';
 import {CurrencyListContext} from "../context/CurrencyListProvider";
-import CurrencyInput from 'react-currency-input-field';
 import {convertCurrency} from "../RestApi";
 import ToggledButton from "../common/ToggledButton";
 import CurrencyDropdown from "../common/CurrencyDropdown";
@@ -17,15 +16,15 @@ const ConverterForm = () => {
             <div className="fees-form">
                 <div>
                     <label htmlFor="amount">Amount</label>
-                    <CurrencyInput
+                    <input
                         id="amount"
                         className="currency-input"
-                        name="input-name"
-                        groupSeparator=" "
+                        type="number"
                         value={form.amount}
-                        allowDecimals
-                        decimalsLimit={2}
-                        onChange={(value) => setForm(prevState => ({...prevState, amount: (value || 0) < maxAmount ? value : maxAmount }))}
+                        onChange={({target: {value}}) => setForm(prevState => ({
+                            ...prevState,
+                            amount: (value || 0) < maxAmount ? value : prevState.amount
+                        }))}
                     />
                 </div>
 
