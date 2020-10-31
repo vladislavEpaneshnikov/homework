@@ -3,8 +3,7 @@ import {CurrencyListContext} from "../context/CurrencyListProvider";
 import {convertCurrency} from "../RestApi";
 import ToggledButton from "../common/ToggledButton";
 import CurrencyDropdown from "../common/CurrencyDropdown";
-
-const maxAmount = 999999999.99;
+import CurrencyInput from "../common/CurrencyInput";
 
 const ConverterForm = () => {
     const [form, setForm] = useState({baseCurrency: 'EUR', targetCurrency: 'USD'});
@@ -16,16 +15,13 @@ const ConverterForm = () => {
             <div className="fees-form">
                 <div>
                     <label htmlFor="amount">Amount</label>
-                    <input
+                    <CurrencyInput
                         id="amount"
-                        className="currency-input"
-                        type="number"
-                        value={form.amount}
-                        onChange={({target: {value}}) => setForm(prevState => ({
+                        currentValue={form.amount}
+                        setCurrency={(value) => setForm(prevState => ({
                             ...prevState,
-                            amount: (value || 0) < maxAmount ? value.substr(0, 30) : prevState.amount
-                        }))}
-                    />
+                            amount: value
+                        }))}/>
                 </div>
 
                 <div>
@@ -47,8 +43,9 @@ const ConverterForm = () => {
                         icon={<i className="fa fa-angle-right"/>}
                         text="Convert"
                         active={form.amount > 0}
-                        onClick={() => convertCurrency(form).then(({data}) => setResult(`${data} ${form.targetCurrency}`))}/>
-
+                        onClick={() => convertCurrency(form)
+                            .then(({data}) => setResult(`${data} ${form.targetCurrency}`))
+                        }/>
                 </div>
             </div>
             {!!result && <div className="convert-result">Result: {result}</div>}

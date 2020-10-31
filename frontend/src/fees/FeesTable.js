@@ -9,24 +9,25 @@ const FeesTable = () => {
         <>
             <table className="custom-fees-table">
                 <tbody>
-                {!customRates.length &&
-                <tr><td className="no-fees-saved">No Fees Saved</td></tr>}
-                {customRates.map(({baseCurrency, targetCurrency, rate}, key) =>
-                    <tr key={key}>
-                        <td>{baseCurrency}</td>
-                        <td><i className="fa fa-arrow-right"/></td>
-                        <td>{targetCurrency}</td>
-                        <td>{rate}</td>
-                        <td className="button-wrapper">
-                            <button onClick={() => deleteCustomRate({baseCurrency, targetCurrency}).then(refreshList)}>
-                                REMOVE
-                            </button>
-                        </td>
-                    </tr>)}
+                {!customRates.length && <tr><td className="no-fees-saved">No Fees Saved</td></tr>}
+                {customRates.map((fee, key) => <TableRow {...{...fee, key, refreshList}}/>)}
                 </tbody>
             </table>
         </>
     )
 };
+
+const TableRow = ({baseCurrency, targetCurrency, rate, key, refreshList}) =>
+    <tr key={key}>
+        <td>{baseCurrency}</td>
+        <td><i className="fa fa-arrow-right"/></td>
+        <td>{targetCurrency}</td>
+        <td>{rate}</td>
+        <td className="button-wrapper">
+            <button onClick={() => deleteCustomRate({baseCurrency, targetCurrency}).then(refreshList)}>
+                REMOVE
+            </button>
+        </td>
+    </tr>;
 
 export default FeesTable;

@@ -6,11 +6,11 @@ import java.util.List;
 
 public interface CurrencyService {
 
-    public void addCustomRate(CustomRate customRate);
+    void addCustomRate(CustomRate customRate);
 
-    public Double convertCurrency(String base, String currency, Double amount);
+    Double convertCurrency(String base, String currency, Double amount);
 
-    public void removeCustomCurrency(String base, String currency);
+    void removeCustomCurrency(String base, String currency);
 
-    public List<CustomRate> getCustomRates();
+    List<CustomRate> getCustomRates();
 }

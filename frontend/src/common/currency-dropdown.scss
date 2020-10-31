@@ -50,11 +50,11 @@
     }
   }
 
-  /* Firefox */
+  /* Custom scrollbar Firefox */
   scrollbar-width: thin;
   scrollbar-color: $base-color-lighter $base-color-darker;
 
-  /* Chrome/Edge/Safari */
+  /* Custom scrollbar Chrome/Edge/Safari */
   &::-webkit-scrollbar {
     width: 8px;
   }

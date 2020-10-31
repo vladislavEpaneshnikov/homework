@@ -38,6 +38,8 @@ class MainControllerTest {
     private static final Double MIN_AMOUNT = 0.1;
     private static final Double MAX_AMOUNT = 999999999.99;
 
+    private static final String CURRENCY_LIST_URL = "/currencies";
+    private static final String CUSTOM_RATES_LIST_URL = "/list";
     private static final String REMOVE_CUSTOM_RATE_URL = "/currency?baseCurrency=%s&targetCurrency=%s";
     private static final String ADD_CUSTOM_RATE_URL = "/currency?baseCurrency=%s&targetCurrency=%s&rate=%s";
     private static final String CONVERT_URL = "/currency?baseCurrency=%s&targetCurrency=%s&amount=%s";
@@ -54,7 +56,7 @@ class MainControllerTest {
     @Test
     void getCurrencies() throws Exception {
         assertEquals(MAPPER.writeValueAsString(CURRENCY_TYPES),
-                mockMvc.perform(get("/currencies"))
+                mockMvc.perform(get(CURRENCY_LIST_URL))
                         .andExpect(status().isOk())
                         .andReturn().getResponse().getContentAsString());
     }
@@ -66,7 +68,7 @@ class MainControllerTest {
         when(service.getCustomRates()).thenReturn(customRates);
 
         assertEquals(MAPPER.writeValueAsString(customRates),
-                mockMvc.perform(get("/list"))
+                mockMvc.perform(get(CUSTOM_RATES_LIST_URL))
                         .andExpect(status().isOk())
                         .andReturn().getResponse().getContentAsString());
     }

@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 
 @Documented
 @Constraint(validatedBy = CurrencyValidator.class)
-@Target( { ElementType.FIELD, ElementType.METHOD })
+@Target( { ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ValidCurrency {
     String message() default "Invalid currency code";

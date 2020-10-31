@@ -57,7 +57,7 @@ public class MainController {
 
     @RequestMapping(value = "currency", method = POST, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<String> addCustomRate(@Valid final Currency currency,
-                                                @RequestParam @DecimalMin("0.01") @DecimalMax("999999999.99") final double rate) {
+            @RequestParam @DecimalMin("0.01") @DecimalMax("999999999.99") final double rate) {
 
         service.addCustomRate(new CustomRate(currency.getBaseCurrency(), currency.getTargetCurrency(), rate));
 
@@ -66,7 +66,7 @@ public class MainController {
 
     @RequestMapping(value = "currency", method = GET, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<Double> convertCurrency(@Valid final Currency currency,
-                                                  @RequestParam @DecimalMin("0.01") @DecimalMax("999999999.99") final double amount) {
+            @RequestParam @DecimalMin("0.01") @DecimalMax("999999999.99") final double amount) {
 
         return ok(service.convertCurrency(currency.getBaseCurrency(), currency.getTargetCurrency(), amount));
     }
