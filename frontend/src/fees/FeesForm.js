@@ -40,7 +40,7 @@ const FeesForm = () => {
                     value={form.rate}
                     onChange={({target: {value}}) => setForm(prevState => ({
                         ...prevState,
-                        rate: (value || 0) < maxRate ? value : prevState.rate
+                        rate: (value || 0) < maxRate ? value.substr(0, 30) : prevState.rate
                     }))}
                 />
             </div>

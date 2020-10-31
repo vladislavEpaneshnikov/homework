@@ -23,7 +23,7 @@ const ConverterForm = () => {
                         value={form.amount}
                         onChange={({target: {value}}) => setForm(prevState => ({
                             ...prevState,
-                            amount: (value || 0) < maxAmount ? value : prevState.amount
+                            amount: (value || 0) < maxAmount ? value.substr(0, 30) : prevState.amount
                         }))}
                     />
                 </div>
